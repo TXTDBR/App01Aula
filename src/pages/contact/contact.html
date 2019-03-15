@@ -1,7 +1,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      <!-- BIND: Interpolação-->
+      {{ title }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,6 +13,7 @@
     <ion-item>
       <ion-icon name="ionic" item-start></ion-icon>
       @ionicframework
+      <p><a (click)="goToSlide()">VAi para o Slide</a></p>
     </ion-item>
   </ion-list>
 </ion-content>
