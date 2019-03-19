@@ -15,7 +15,7 @@
 
   <ion-item>
     <ion-label fixed>Cidade</ion-label>
-    <ion-input type="text" [id]="txtCidade" [(ngModel)]="txtCidade"></ion-input>
+    <ion-input type="text" [id]="txtCidade"  [(ngModel)]="txtCidade"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label fixed>Logradouro</ion-label>
@@ -25,13 +25,17 @@
 </ion-list>
 <h3 style="text-align:center">Resultado</h3>
 <hr>
-<div *ngFor="let endereco of enderecos" class="lista" padding>
-  <p><strong>Cep:</strong> {{endereco.cep}}</p>
-  <p><strong>Estado:</strong> {{endereco.uf}}</p>
-  <p><strong>Cidade:</strong> {{endereco.localidade}}</p>
-  <p><strong>Bairro:</strong> {{endereco.bairro}}</p>
-  <p><strong>Rua:</strong> {{endereco.logradouro}}</p>
-  <p><strong>IBGE: </strong>{{endereco.ibge}}</p>
+<div  class="hr mb-5" padding>
+  <ion-item-group *ngFor="let endereco of enderecos">
+    <ion-item-divider color="light"><strong>CEP:</strong> {{endereco.cep}}</ion-item-divider>
+    
+    <ion-item><strong>Estado:</strong> {{endereco.uf}}</ion-item>
+    <ion-item><strong>Cidade:</strong> {{ endereco.localidade }}</ion-item>
+    <ion-item><strong>Bairro:</strong> {{ endereco.bairro }}</ion-item>
+    <ion-item><strong>Rua:</strong> {{ endereco.logradouro }}</ion-item>
+    <ion-item><strong>IBGE:</strong> {{ endereco.ibge }}</ion-item>
+
+  </ion-item-group>
   
 </div>
 </ion-content>
