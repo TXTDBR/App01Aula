@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CorreiosProvider } from '../../providers/correios/correios';
 
 /**
  * Generated class for the CorreiosPage page.
@@ -12,25 +13,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-correios',
   templateUrl: 'correios.html',
+  providers: [
+    CorreiosProvider
+  ]
 })
 export class CorreiosPage {
 
   txtCidade:string;
   txtEstado:string;
   txtLogradouro:string;
+  enderecos:any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     private cProvider: CorreiosProvider) {
   }
 
   ionViewDidLoad() {
     
   }
 
-  exibeInputs(){
-    console.log(`Cidade:${this.txtCidade}`);
-    console.log(`Cidade:${this.txtEstado}`);
-    console.log(`Cidade:${this.txtLogradouro}`);
-    this.txtCidade = "";
+  listaEnderecos(){
+    this.cProvider.getEnderecos(this.txtEstado, this.txtCidade, this.txtLogradouro).subscribe(
+      data =>{
+       // let rs = (data as any)._body;
+        //let rsJson = JSON.parse(rs);
+        //console.log(data);
+        this.enderecos = data;
+      }, error =>{
+        console.log(error);
+        
+      }
+    );
   }
 
 

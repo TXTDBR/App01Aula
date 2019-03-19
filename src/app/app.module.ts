@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SlidePage } from '../pages/slide/slide';
 import { ConfigProvider } from '../providers/config/config';
 import { CorreiosPage } from '../pages/correios/correios';
+import { CorreiosProvider } from '../providers/correios/correios';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { CorreiosPage } from '../pages/correios/correios';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +45,8 @@ import { CorreiosPage } from '../pages/correios/correios';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ConfigProvider
+    ConfigProvider,
+    CorreiosProvider
   ]
 })
 export class AppModule {}
